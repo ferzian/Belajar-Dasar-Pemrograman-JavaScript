@@ -27,7 +27,7 @@ console.log(result);
 const resultt = Number('Dicoding');
 console.log(resultt);
 
-const apakek = Number ('20.060' + '2')
+const apakek = Number ('20.060' + 2) //string ditambah number akan menjadi string
 console.log(apakek);
 
 const apakeka = Number (20.060 + 2)
@@ -73,3 +73,21 @@ const ageee = 20;
 const message = 'Umurku: ' + age;
 
 console.log(message);
+
+console.log('==================================================')
+
+// kuis koding
+// TODO: buatlah variabel (konstan) bernama `currency` dan isi dengan nilai "IDR".
+const currency = 'IDR'
+
+// TODO: buatlah variabel bernama `value` dan isi dengan nilai 10000.
+let value = 10000
+
+// TODO: tambahkan nilai di dalam variabel `value` sebesar 5000.
+value += 5000
+/**
+ * TODO: buatlah variabel (konstan) bernama `money`,
+ * isi dengan penambahan string dari nilai `currency` + " " + `value`.
+ */
+const money = `${currency}` + ' ' + `${value}`
+console.log(money)
