@@ -99,17 +99,83 @@ const mySet = new Set([1, 2, 3]);
 console.log(mySet);
 
 // menyimpan nilai ke dalam set menggunakan add
-mySet.add(4)
-console.log(mySet)
+mySet.add(4);
+console.log(mySet);
 
 // mengakses nilai set menggunakan perulangan
-for (const contoh of mySet){
-  console.log(contoh)
+for (const contoh of mySet) {
+  console.log(contoh);
 }
 console.log();
 
-mySet.forEach((value) => console.log(value))
+mySet.forEach((value) => console.log(value));
 
 // menghapus nilai set menggunakan delete
-mySet.delete(3)
-console.log(mySet)
+mySet.delete(3);
+console.log(mySet);
+
+console.log();
+console.log("==============================================");
+
+// spread operator di object
+const obj1 = { name: "Dicoding" };
+const obj2 = { lastName: "Indonesia", address: "Jl. Batik Kumeli No 50" };
+const newObj = { ...obj1, ...obj2 };
+
+console.log(newObj);
+
+// spread operator di array
+const array1 = ["Dicoding"];
+const array2 = ["Indonesia", "Jl. Batik Kumeli No 50"];
+const newArray = [...array1, ...array2];
+
+console.log(newArray);
+
+console.log();
+console.log("==============================================");
+
+// rest parameter
+function myFunc(number, ...manyMoreArgs) {
+  console.log("number", number);
+  console.log("manyMoreArgs", manyMoreArgs);
+}
+
+myFunc("one", "two", "three");
+
+// rest parameter juga untuk menangkap sisa elemen terakhir dalam array
+const favorites = ["Nasi Goreng", "Mie Goreng", "Ayam Bakar", "Tahu", "Tempe"];
+
+const [first, second, ...rest] = favorites;
+
+console.log(first);
+console.log(second);
+console.log(rest);
+
+console.log();
+console.log("==============================================");
+
+// quiz
+const employees = [
+  {
+    name: "Fulan",
+    email: "fulan@dicoding.com",
+    joinYear: 2020,
+  },
+];
+
+function addEmployee(name, email, joinYear) {
+  /**
+   * @TODO
+   * lengkapi fungsi ini agar dapat menambahkan objek employee baru
+   * berdasarkan nilai argumen fungsi dan simpan ke dalam array `employees`
+   */
+
+  const newEmployees = {
+    name: name,
+    email: email,
+    joinYear: joinYear,
+  };
+  employees.push(newEmployees);
+}
+addEmployee("budi", "budi@gmail.com", 2020);
+console.log(employees);
