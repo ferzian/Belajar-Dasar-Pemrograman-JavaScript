@@ -86,24 +86,26 @@ console.log("Sebelum diubah: ", coffee.temperature);
 coffee.temperature = 100;
 console.log("Setelah diubah: ", coffee.temperature);
 
+console.log();
+
 // nilai tidak dapat diubah (encapsulation)
-class CoffeeMachine {
-  #temperature = 90;
+class CoffeeMachinee {
+  #temperaturee = 90;
   
-  constructor(waterAmount) {
-    this.waterAmount = waterAmount;
-    this.#temperature = this.#defaultTemperature();
+  constructor(waterAmountt) {
+    this.waterAmountt = waterAmountt;
+    this.#temperaturee = this.#defaultTemperaturee();
   }
   
-  set temperature(temperature) {
-    console.log("you are not allowed to change the temperature");
+  set temperaturee(temperaturee) {
+    console.log('you are not allowed to change the temperature');
   }
   
-  get temperature() {
-    return this.#temperature;
+  get temperaturee() {
+    return this.#temperaturee;
   }
   
-  #defaultTemperature() {
+  #defaultTemperaturee() {
     return 90;
   }
 }
@@ -111,24 +113,35 @@ class CoffeeMachine {
 console.log();
 console.log("======================================");
 
-// nilai tidak dapat diubah (encapsulation)
-class CoffeeMachine {
-  #temperature = 90;
-
-  constructor(waterAmount) {
-    this.waterAmount = waterAmount;
-    this.#temperature = this.#defaultTemperature();
+// polymorphism
+class SmartPhoness {
+  constructor(colorr, brandd, modell) {
+    this.colorr = colorr;
+    this.brandd = brandd;
+    this.modell = modell;
   }
 
-  set temperature(temperature) {
-    console.log('you are not allowed to change the temperature');
-  }
-
-  get temperature() {
-    return this.#temperature;
-  }
-
-  #defaultTemperature() {
-    return 90;
+  chargingg() {
+    console.log(`Charging ${this.modell}`);
   }
 }
+
+class Androidd extends SmartPhoness {
+  constructor(colorr, brandd, modell, device) {
+    super(colorr, brandd, modell);
+    this.device = device;
+  }
+
+  chargingg() {
+    super.chargingg(); //boleh  ada boleh tidak
+    console.log(`Charging ${this.modell} with fast charger`);
+  }
+
+  splitScreenn() {
+    console.log('Android have a Split Screen');
+  }
+}
+
+const androidd = new Androidd('white', 'B', 'Galaxy S21', 'smart TV');
+
+androidd.chargingg();
