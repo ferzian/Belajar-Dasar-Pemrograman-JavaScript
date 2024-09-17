@@ -156,12 +156,12 @@ class Character {
     this.health = health;
     this.position = position;
   }
- 
+  
   canMove() {
     console.log(`${this.name} moves to another position!`);
   }
 }
- 
+
 function canAttack(character) {
   return {
     attack: () => {
@@ -169,7 +169,7 @@ function canAttack(character) {
     }
   };
 }
- 
+
 function canDefend(character) {
   return {
     defend: () => {
@@ -177,7 +177,7 @@ function canDefend(character) {
     }
   };
 }
- 
+
 function canCastSpell(character) {
   return {
     castSpell: () => {
@@ -185,40 +185,108 @@ function canCastSpell(character) {
     }
   };
 }
- 
+
 function createMonster(name) {
   const character = new Character(name, 100, 0);
   return Object.assign(character, canAttack(character));
 }
- 
+
 function createGuardian(name) {
   const character = new Character(name, 100, 0);
   return Object.assign(character, canDefend(character));
 }
- 
+
 function createWizard(name) {
   const character = new Character(name, 100, 0);
   return Object.assign(character, canCastSpell(character));
 }
- 
+
 function createWarrior(name) {
   const character = new Character(name, 100, 0);
   return Object.assign(character, canAttack(character), canDefend(character));
 }
- 
+
 const monster = createMonster('Monster');
 monster.canMove();
 monster.attack();
- 
+
 const guardian = createGuardian('Guardian');
 guardian.canMove();
 guardian.defend();
- 
+
 const wizard = createWizard('Wizard');
 wizard.canMove();
 wizard.castSpell();
- 
+
 const warrior = createWarrior('Warrior');
 warrior.canMove();
 warrior.attack();
 warrior.defend();
+
+console.log();
+console.log("======================================");
+
+// quiz
+/**
+ * TODO:
+ * 1. Buatlah class bernama Animal dengan ketentuan:
+ *    - Memiliki properti:
+ *      - name: string
+ *      - age: int
+ *      - isMammal: boolean
+ *    - Memiliki constructor untuk menginisialisasi properti:
+ *      - name
+ *      - age
+ *      - isMammal
+ * 2. Buatlah class bernama Rabbit dengan ketentuan:
+ *    - Merupakan turunan dari class Animal
+ *    - Memiliki method:
+ *      - eat yang mengembalikan nilai string `${this.name} sedang makan!`
+ *    - Ketika diinstansiasi, properti isMammal harus bernilai true
+ * 3. Buatlah class bernama Eagle dengan ketentuan:
+ *    - Merupakan turunan dari class Animal
+ *    - Memiliki method:
+ *      - fly yang mengembalikan nilai string `${this.name} sedang terbang!`
+ *    - Ketika diinstansiasi, properti isMammal harus bernilai false
+ * 4. Buatlah instance dari class Rabbit bernama "myRabbit" dengan ketentuan:
+ *    - properti name bernilai: "Labi"
+ *    - properti age bernilai: 2
+ * 5. Buatlah instance dari class Eagle bernama "myEagle" dengan ketentuan:
+ *    - properti name bernilai: "Elo"
+ *    - properti age bernilai: 4
+ */
+ 
+
+// Tulis kode di bawah ini
+
+class Animal{
+  constructor(name, age, isMammal){
+    this.name = name;
+    this.age = age;
+    this.isMammal = isMammal;
+  }
+}
+
+class Rabbit extends Animal{
+  constructor(name, age){
+    super(name, age, true);
+  }
+  eat(){
+    return `${this.name} sedang makan!`;
+  }
+}
+
+class Eagle extends Animal{
+  constructor(name, age){
+    super(name, age, false);
+  }
+  fly(){
+    return `${this.name} sedang terbang!`;
+  }
+}
+
+const myRabbit = new Rabbit('Labi', 2);
+const myEagle = new Eagle('Elo', 4);
+
+console.log(myRabbit.eat())
+console.log(myEagle.fly())
