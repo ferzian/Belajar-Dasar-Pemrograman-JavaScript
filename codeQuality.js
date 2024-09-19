@@ -52,3 +52,7 @@ const shoppingCart = [
 
 // Memanggil fungsi dan mencetak hasilnya
 console.log(`Total belanjaan: Rp ${calculateTotal(shoppingCart)}`);
+
+console.log();
+console.log("===========================================");
+
