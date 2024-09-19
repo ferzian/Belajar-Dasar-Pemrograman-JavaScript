@@ -66,29 +66,113 @@ console.log();
 console.log("==========================================");
 
 // chaining promise
-import { makeCoffee, sendCoffee } from "./coffee.mjs";
+// import { makeCoffee, sendCoffee } from "./coffee.mjs";
 
-const order = "Kopi Espresso";
+// const order = "Kopi Espresso";
 
-console.log(`Saya memesan ${order} di kafe.`);
+// console.log(`Saya memesan ${order} di kafe.`);
 
-makeCoffee(order)
-.then(
-    (value) => {
-        return sendCoffee(value);
-    },
-    (error) => {
-      console.error(error.message);
-      throw error;
-    }
-  )
-  .then(
-    (value) => {
-      console.log(`Pramusaji memberikan ${value} pesanan.`);
-      console.log(`Saya mendapatkan ${value} dan menghabiskannya.`);
-    },
-    (error) => {
-      console.error(error.message);
-      throw error;
-    }
-  );
+// makeCoffee(order)
+// .then(
+//   (value) => {
+//     return sendCoffee(value);
+//   },
+//   (error) => {
+//     console.error(error.message);
+//     throw error;
+//   }
+// )
+// .then(
+//   (value) => {
+//     console.log(`Pramusaji memberikan ${value} pesanan.`);
+//     console.log(`Saya mendapatkan ${value} dan menghabiskannya.`);
+//   },
+//   (error) => {
+//     console.error(error.message);
+//     throw error;
+//   }
+// );
+
+console.log();
+console.log("==========================================");
+
+// penggunaan sync dengan menerapkan async dan await
+// import { doSomething } from "./utils.mjs";
+
+// async function promiseWithAsyncAwait() {
+//   try {
+//     console.log("Start.");
+    
+//     const result = await doSomething();
+//     console.log(result);
+    
+//     console.log("End.");
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+
+// promiseWithAsyncAwait();
+
+/* Output:
+Start.
+You did it.
+End.
+*/
+
+console.log();
+console.log("==========================================");
+
+// concurrency dengan promise
+
+// pemanfaatan promise .all jika salah satu promise gagal
+// const promise1 = new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+// const promise2 = new Promise((resolve, reject) => setTimeout(() => reject(new Error('Ups!')), 2000));
+// const promise3 = new Promise((resolve) => setTimeout(() => resolve(3), 3000));
+
+// Promise.all([promise1, promise2, promise3])
+//   .then((values) => {
+//     console.log('Success');
+//     console.log(values);
+//   })
+//   .catch((error) => {
+//     console.log('Failed');
+//     console.log(error.message);
+//   });
+
+/* Output:
+Failed
+Ups!
+*/
+
+console.log()
+
+// semua promise akan dikembalikan meskipun ada yang gagal menggunakan promise .allSettled
+const promise1 = new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+const promise2 = new Promise((resolve, reject) => setTimeout(() => reject(new Error('Ups!')), 2000));
+const promise3 = new Promise((resolve) => setTimeout(() => resolve(3), 3000));
+
+Promise.allSettled([promise1, promise2, promise3])
+  .then((values) => {
+    console.log('Success');
+    console.log(values);
+  })
+  .catch((error) => {
+    console.log('Failed');
+    console.log(error.message);
+  });
+
+/* Output:
+Success
+[
+  { status: 'fulfilled', value: 1 },
+  {
+    status: 'rejected',
+    reason: Error: Ups!
+        at Timeout._onTimeout (file:///home/nurrizkiadip/static-method.mjs:2:75)
+        at listOnTimeout (node:internal/timers:573:17)
+        at process.processTimers (node:internal/timers:514:7)
+  },
+  { status: 'fulfilled', value: 3 }
+]
+*/
